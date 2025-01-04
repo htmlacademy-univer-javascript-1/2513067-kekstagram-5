@@ -3,11 +3,11 @@ function checkStringLength(str, maxLength) {
 }
 
 // Cтрока короче 20 символов
-checkStringLength('проверяемая строка', 20); // true
+console.log(checkStringLength('проверяемая строка', 20)); // true
 // Длина строки ровно 18 символов
-checkStringLength('проверяемая строка', 18); // true
+console.log(checkStringLength('проверяемая строка', 18)); // true
 // Строка длиннее 10 символов
-checkStringLength('проверяемая строка', 10); // false
+console.log(checkStringLength('проверяемая строка', 10)); // false
 
 function isPalindrome(str) {
   // Приводим строку к нижнему регистру и удаляем пробелы
@@ -16,10 +16,10 @@ function isPalindrome(str) {
   return normalizedStr === normalizedStr.split('').reverse().join('');
 }
 // Строка является палиндромом
-isPalindrome('топот'); // true
+console.log(isPalindrome('топот')); // true
 
 // Несмотря на разный регистр, тоже палиндром
-isPalindrome('ДовОд'); // true
+console.log(isPalindrome('ДовОд')); // true
 
 // Это не палиндром
-isPalindrome('Кекс'); // false
+console.log(isPalindrome('Кекс')); // false
