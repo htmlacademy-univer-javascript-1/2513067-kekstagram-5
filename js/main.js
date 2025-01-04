@@ -1,5 +1,7 @@
-//import { generatePhotos } from './data.js';
+import { renderPhotos } from './render.js';
+import { generatePhotos } from './data.js';
 
-//const photosArray = generatePhotos();
-//(photosArray);
+const photos = generatePhotos(25);
+renderPhotos(photos);
+
 
