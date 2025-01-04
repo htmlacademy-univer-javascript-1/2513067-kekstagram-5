@@ -1,24 +1,25 @@
-function isStringLengthValid(inputString, maxLength) {
-  return inputString.length <= maxLength;
+function checkStringLength(str, maxLength) {
+  return str.length <= maxLength;
 }
 
-console.log(isStringLengthValid('проверяемая строка', 20)); // true
-console.log(isStringLengthValid('проверяемая строка', 18)); // true
-console.log(isStringLengthValid('проверяемая строка', 10)); // false
+// Cтрока короче 20 символов
+checkStringLength('проверяемая строка', 20); // true
+// Длина строки ровно 18 символов
+checkStringLength('проверяемая строка', 18); // true
+// Строка длиннее 10 символов
+checkStringLength('проверяемая строка', 10); // false
 
-
-function isPalindrome(inputString) {
-  const normalizedString = inputString.replaceAll(' ', '').toLowerCase();
-  let reversedString = '';
-
-  for (let i = normalizedString.length - 1; i >= 0; i--) {
-    reversedString += normalizedString[i];
-  }
-
-  return normalizedString === reversedString;
+function isPalindrome(str) {
+  // Приводим строку к нижнему регистру и удаляем пробелы
+  const normalizedStr = str.toLowerCase().replace(/\s+/g, '');
+  // Сравниваем строку с её перевернутой версией
+  return normalizedStr === normalizedStr.split('').reverse().join('');
 }
+// Строка является палиндромом
+isPalindrome('топот'); // true
 
-console.log(isPalindrome('топот')); // true
-console.log(isPalindrome('ДовОд')); // true
-console.log(isPalindrome('Кекс')); // false
-console.log(isPalindrome('Лёша на полке клопа нашёл')); // true
+// Несмотря на разный регистр, тоже палиндром
+isPalindrome('ДовОд'); // true
+
+// Это не палиндром
+isPalindrome('Кекс'); // false
