@@ -5,3 +5,4 @@ export function getRandomInt(min, max) {
 export function getRandomElement(array) {
   return array[getRandomInt(0, array.length - 1)];
 }
+//
