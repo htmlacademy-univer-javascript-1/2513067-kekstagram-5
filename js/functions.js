@@ -23,3 +23,4 @@ console.log(isPalindrome('ДовОд')); // true
 
 // Это не палиндром
 console.log(isPalindrome('Кекс')); // false
+//
