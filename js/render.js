@@ -1,3 +1,4 @@
+// render.js
 export function renderPhotos(photos) {
   const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
   const picturesContainer = document.querySelector('.pictures');
@@ -14,3 +15,4 @@ export function renderPhotos(photos) {
 
   picturesContainer.appendChild(fragment);
 }
+
