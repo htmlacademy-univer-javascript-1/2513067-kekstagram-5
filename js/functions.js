@@ -24,4 +24,3 @@ function isPalindrome(str) {
 
 // Это не палиндром
 (isPalindrome('Кекс')); // false
-//
