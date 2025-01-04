@@ -1,5 +1,7 @@
+// main.js
 import { generatePhotos } from './data.js';
 
-const photosArray = generatePhotos();
-console.log(photosArray);
+const photos = generatePhotos(25);
 
+
+photos();
