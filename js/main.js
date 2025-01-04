@@ -1,5 +1,5 @@
 import { generatePhotos } from './data.js';
+import { renderPhotos } from './render.js';
 
 const photosArray = generatePhotos();
-console.log(photosArray);
-
+renderPhotos(photosArray);
