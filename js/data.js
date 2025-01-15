@@ -46,3 +46,10 @@ export function generatePhotos() {
   }
   return photos;
 }
+
+
+const MAX_SCALE = 100;
+const MIN_SCALE = 0;
+const STEP_SCALE = 25;
+
+export { MAX_SCALE, MIN_SCALE, STEP_SCALE };
