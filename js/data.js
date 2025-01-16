@@ -1,14 +1,13 @@
-import { getRandomInt, getRandomElement } from './util.js';
+import { createIdGenerator, getRandomInteger, getRandomArrayElement } from './util.js';
 
-const descriptions = [
-  'Прекрасный вид!',
-  'Невероятная красота природы.',
-  'Лучший момент дня.',
-  'Воспоминания на всю жизнь.',
-  'Удивительное приключение.'
-];
+const MAX_ID_FOR_PHOTOS = 25;
 
-const messages = [
+const MAX_SCALE = 100;
+const MIN_SCALE = 0;
+const STEP_SCALE = 25;
+
+
+const COMMENT_MESSAGES = [
   'Всё отлично!',
   'В целом всё неплохо. Но не всё.',
   'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
@@ -17,39 +16,48 @@ const messages = [
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'
 ];
 
-const names = ['Артём', 'Иван', 'Ольга', 'Мария', 'Дмитрий', 'Елена'];
+const NAMES = ['Артём', 'Иван', 'Ольга', 'Мария', 'Дмитрий', 'Елена'];
 
-function generateComments() {
-  const comments = [];
-  const commentCount = getRandomInt(0, 30);
-  for (let i = 0; i < commentCount; i++) {
-    comments.push({
-      id: getRandomInt(1, 1000),
-      avatar: `img/avatar-${getRandomInt(1, 6)}.svg`,
-      message: getRandomElement(messages),
-      name: getRandomElement(names)
-    });
+function createArrayComments(count) {
+  const commentsArray = [];
+  const generateCommentId = createIdGenerator();
+  while (commentsArray.length < count) {
+    const comment = {
+      id: generateCommentId(),
+      avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
+      message: getRandomArrayElement(COMMENT_MESSAGES),
+      name: getRandomArrayElement(NAMES)
+    };
+
+    if (getRandomInteger(1, 2) === 2) {
+      let secondMessage = getRandomArrayElement(COMMENT_MESSAGES);
+      while (comment.message === secondMessage) {
+        secondMessage = getRandomArrayElement(COMMENT_MESSAGES);
+      }
+      comment.message += ` ${secondMessage}`;
+    }
+
+    commentsArray.push(comment);
   }
-  return comments;
+
+  return commentsArray;
 }
 
-export function generatePhotos() {
-  const photos = [];
-  for (let i = 1; i <= 25; i++) {
-    photos.push({
-      id: i,
-      url: `photos/${i}.jpg`,
-      description: getRandomElement(descriptions),
-      likes: getRandomInt(15, 200),
-      comments: generateComments()
-    });
+function createArrayPhotos() {
+  const generatePhotoId = createIdGenerator();
+  const photoIdForUrl = createIdGenerator();
+  const photosArray = [];
+  while (photosArray.length < MAX_ID_FOR_PHOTOS) {
+    const photo = {
+      id: generatePhotoId(),
+      url: `photos/${photoIdForUrl()}.jpg`,
+      description: 'Еще не придумал что здесь написать',
+      likes: getRandomInteger(15, 200),
+      comments: createArrayComments(getRandomInteger(0, 30))
+    };
+    photosArray.push(photo);
   }
-  return photos;
+  return photosArray;
 }
 
-
-const MAX_SCALE = 100;
-const MIN_SCALE = 0;
-const STEP_SCALE = 25;
-
-export { MAX_SCALE, MIN_SCALE, STEP_SCALE };
+export { createArrayPhotos, MAX_SCALE, MIN_SCALE, STEP_SCALE };

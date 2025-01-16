@@ -10,7 +10,6 @@ const editFormTextHashtags = editForm.querySelector('.text__hashtags');
 const editFormTextDescription = editForm.querySelector('.text__description');
 const body = document.body;
 
-
 const scaleField = editForm.querySelector('.img-upload__scale');
 const scaleValue = scaleField.querySelector('.scale__control--value');
 const smallerButton = scaleField.querySelector('.scale__control--smaller');
@@ -41,12 +40,10 @@ function closeEditForm() {
   loadPhotoForm.removeEventListener('keydown', onEscapeKeyDown);
 }
 
-
 const onBiggerButtonClick = () => {
   const currentValue = parseInt(scaleValue.value.slice(0, -1), 10);
   const decreasedValue = currentValue + STEP_SCALE > MAX_SCALE ? MAX_SCALE : currentValue + STEP_SCALE;
   scaleValue.value = `${decreasedValue}%`;
-
   imageElement.style = `transform: scale(${decreasedValue / 100})`;
 };
 
@@ -54,10 +51,8 @@ const onSmallerButtonClick = () => {
   const currentValue = parseInt(scaleValue.value.slice(0, -1), 10);
   const decreasedValue = currentValue - STEP_SCALE < MIN_SCALE ? MIN_SCALE : currentValue - STEP_SCALE;
   scaleValue.value = `${decreasedValue}%`;
-
   imageElement.style = `transform: scale(${decreasedValue / 100})`;
 };
 
 smallerButton.addEventListener('click', onSmallerButtonClick);
-
 biggerButton.addEventListener('click', onBiggerButtonClick);
