@@ -1,26 +1,10 @@
-// render.js
-import { openFullSizePhoto } from './fullsize.js';
+import { createArrayPhotos } from './data.js';
+import { startCreateMiniPicture } from './miniaturePicture.js';
+import { startCreateBigPicture } from './bigPicture.js';
 
-export function renderPhotos(photos) {
-  const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
-  const picturesContainer = document.querySelector('.pictures');
-  const fragment = document.createDocumentFragment();
+const photosData = createArrayPhotos();
 
-  photos.forEach((photo) => {
-    const pictureElement = pictureTemplate.cloneNode(true);
-    pictureElement.querySelector('.picture__img').src = photo.url;
-    pictureElement.querySelector('.picture__img').alt = photo.description;
-    pictureElement.querySelector('.picture__likes').textContent = photo.likes;
-    pictureElement.querySelector('.picture__comments').textContent = photo.comments.length;
-
-    pictureElement.addEventListener('click', () => {
-      openFullSizePhoto(photo);
-    });
-
-    fragment.appendChild(pictureElement);
-  });
-
-  picturesContainer.appendChild(fragment);
-}
+startCreateMiniPicture(photosData);
+startCreateBigPicture(photosData);
 
 
