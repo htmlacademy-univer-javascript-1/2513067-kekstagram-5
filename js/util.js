@@ -19,3 +19,4 @@ const getRandomArrayElement = (elements) =>
 const isEscapeKey = (evt) => evt.key === 'Escape';
 
 export { createIdGenerator, getRandomInteger, getRandomArrayElement, isEscapeKey };
+//
